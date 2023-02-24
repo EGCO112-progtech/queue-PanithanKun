@@ -27,11 +27,11 @@ if(new_node){
 }
 
 
-int dequeue_struct(Order *q,int *n){
+int dequeue_struct(Order *q,int *N){
    NodePtr t=q->headPtr;
     int price;
-    printf("Customer No: %d\n",*n);
-    (*n)=(*n)+1;
+    printf("Customer No:%d\n",*N);
+    (*N)=(*N)+1;
    if(q->size>0){
     switch(t->Order_No){
       case 1: printf("Ramen\n");
@@ -54,9 +54,27 @@ int dequeue_struct(Order *q,int *n){
          free(t);
      }
      q->size--;
-   return price;
-   }
-   printf("Empty queue");
+     if(t->Order_No>=1 && t->Order_No<=3)
+     {
+      return price;
+     }
    return 0;
+ }
 }
+void dequeue_All(Order *q){
+  while(q->headPtr!=NULL){
+   NodePtr t=q->headPtr;
+    //int value= t->data;
+    if(q->size>0)
+    {
+    q->headPtr=q->headPtr->nextPtr;
+     if(!(q->headPtr))
+     {
+       q->tailPtr=NULL;
+         free(t);
+     }
+     q->size--;
+   }
+    }
+  }
 
