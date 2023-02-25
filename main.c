@@ -40,7 +40,7 @@ int main(int argc , char **argv) {
         }
  }
   printf("========================================================\n");
-  if(q.size!=0)
+  if(q.size>0)
   {
     if(q.size==1)
     {
